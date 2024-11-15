@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:twi_quran/features/home/domain/models/chapter.dart';
+import 'package:twi_quran/features/home/presentation/surah_view.dart';
 
 import '../controller/home_controller.dart';
 
 class Home extends GetView<HomeController> {
-  HomeController homeController = Get.put(HomeController());
   Home({super.key});
 
   @override
@@ -27,6 +27,7 @@ class Home extends GetView<HomeController> {
                   itemBuilder: (BuildContext context, int index) {
                   Chapters chapter = snapshot.data[index];
                     return ListTile(
+                      onTap: ()=>Get.to(()=>SurahView(chapter: chapter)),
                       leading: Text("${index +1 }"),
                       title: Text(chapter.title),
                       subtitle: Text(chapter.titleEn),
@@ -41,3 +42,6 @@ class Home extends GetView<HomeController> {
             }));
   }
 }
+
+
+

@@ -1,5 +1,5 @@
 class Surah{
-  int surah;
+  int sura;
   int ayah;
   String english;
   String twi;
@@ -7,7 +7,7 @@ class Surah{
 
 //<editor-fold desc="Data Methods">
   Surah({
-    required this.surah,
+    required this.sura,
     required this.ayah,
     required this.english,
     required this.twi,
@@ -19,7 +19,7 @@ class Surah{
       identical(this, other) ||
       (other is Surah &&
           runtimeType == other.runtimeType &&
-          surah == other.surah &&
+          sura == other.sura &&
           ayah == other.ayah &&
           english == other.english &&
           twi == other.twi &&
@@ -27,7 +27,7 @@ class Surah{
 
   @override
   int get hashCode =>
-      surah.hashCode ^
+      sura.hashCode ^
       ayah.hashCode ^
       english.hashCode ^
       twi.hashCode ^
@@ -36,7 +36,7 @@ class Surah{
   @override
   String toString() {
     return 'Surah{' +
-        ' surah: $surah,' +
+        ' sura: $sura,' +
         ' ayah: $ayah,' +
         ' english: $english,' +
         ' twi: $twi,' +
@@ -45,14 +45,14 @@ class Surah{
   }
 
   Surah copyWith({
-    int? surah,
+    int? sura,
     int? ayah,
     String? english,
     String? twi,
     String? arabic,
   }) {
     return Surah(
-      surah: surah ?? this.surah,
+      sura: sura ?? this.sura,
       ayah: ayah ?? this.ayah,
       english: english ?? this.english,
       twi: twi ?? this.twi,
@@ -62,7 +62,7 @@ class Surah{
 
   Map<String, dynamic> toMap() {
     return {
-      'surah': this.surah,
+      'sura': this.sura,
       'ayah': this.ayah,
       'english': this.english,
       'twi': this.twi,
@@ -72,7 +72,7 @@ class Surah{
 
   factory Surah.fromMap(Map<String, dynamic> map) {
     return Surah(
-      surah: map['surah'] as int,
+      sura: map['sura'] as int,
       ayah: map['ayah'] as int,
       english: map['english'] as String,
       twi: map['twi'] as String,
