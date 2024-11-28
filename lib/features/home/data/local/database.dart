@@ -35,8 +35,8 @@ class Dbhelper  {
       await File(path).writeAsBytes(bytes, flush: true);
 
     }
-    sqfliteFfiInit();
-    databaseFactory = databaseFactoryFfi;
+    // sqfliteFfiInit();
+    // databaseFactory = databaseFactoryFfi;
 
     var theDb = await databaseFactory.openDatabase(path);
     return theDb;

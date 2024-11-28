@@ -75,6 +75,12 @@ flutter:
   assets:
     - assets/
 
+  fonts:
+    - family: arabic
+      fonts:
+        - asset: assets/font/hafs.otf
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

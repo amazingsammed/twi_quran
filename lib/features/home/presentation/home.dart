@@ -13,11 +13,12 @@ class Home extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text("Quran in Twi"),
-        leading: IconButton(onPressed: (){},icon: Icon(Icons.menu),),
-      actions: [
-        IconButton(onPressed: (){},icon: Icon(Icons.search),),
-      ],
+      //   leading: IconButton(onPressed: (){},icon: Icon(Icons.menu),),
+      // actions: [
+      //   IconButton(onPressed: (){},icon: Icon(Icons.search),),
+      // ],
       ),
       body: FutureBuilder(
             future: controller.getAllChapters(),
@@ -27,11 +28,12 @@ class Home extends GetView<HomeController> {
                   itemBuilder: (BuildContext context, int index) {
                   Chapters chapter = snapshot.data[index];
                     return ListTile(
-                      onTap: ()=>Get.to(()=>SurahView(chapter: chapter)),
-                      leading: Text("${index +1 }"),
-                      title: Text(chapter.title),
+                      onTap: ()=>Get.to(()=>SurahPage(selectedchapter: chapter, chapters: snapshot.data,)),
+                      leading: CircleAvatar(child: Text("${index +1 }")),
+
+                      title: Text(chapter.title,style: TextStyle(color: Colors.green[800],fontWeight: FontWeight.bold),),
                       subtitle: Text(chapter.titleEn),
-                      trailing: Text(chapter.titleAr),
+                      trailing: Text(chapter.titleAr,style: TextStyle(fontFamily: 'arabic'),),
                     );
                   }, separatorBuilder: (BuildContext context, int index) => Divider(color: Colors.grey.withOpacity(0.2),));
               } else if (snapshot.hasError) {

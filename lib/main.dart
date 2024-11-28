@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:translator/translator.dart';
+import 'package:twi_quran/features/authentication/presentation/auth.dart';
 import 'package:twi_quran/shared/network/network.dart';
 import 'package:twi_quran/shared/theme/theme.dart';
 
@@ -11,7 +12,7 @@ import 'features/home/presentation/master.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Get.lazyPut(()=>HomeController());
+  Get.put(HomeController());
   runApp(const MyApp());
 }
 
@@ -21,9 +22,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+
       themeMode: ThemeMode.system,
       theme: light,
-      home: Master(),
+      home: AuthPage(),
     );
   }
 }

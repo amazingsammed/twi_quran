@@ -3,6 +3,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../bookmark/presentation/bookmark.dart';
+import '../../options/presentation/optionspage.dart';
+import '../../translator/presentation/translatorpage.dart';
 import 'home.dart';
 
 class Master extends StatefulWidget {
@@ -35,9 +38,9 @@ class _MasterState extends State<Master> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     List<Widget> screens = [
       Home(),
-      Home(),
-      Home(),
-      Home(),
+      Bookmark(),
+      Translatorpage(),
+      Optionspage(),
 
     ];
 
@@ -47,8 +50,6 @@ class _MasterState extends State<Master> with SingleTickerProviderStateMixin {
           onPageChanged: changeTabindex,
           children:
           screens
-        // IndexedStack(index: mystore.tabIndex.value, children: screens),
-        // ],
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentIndex,
