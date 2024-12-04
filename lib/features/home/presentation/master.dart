@@ -65,19 +65,16 @@ class _MasterState extends State<Master> with SingleTickerProviderStateMixin {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              activeIcon: Icon(Icons.bookmark_add),
               icon: Icon(Icons.bookmark),
               label: 'Bookmark',
             ),
             BottomNavigationBarItem(
-              activeIcon: Icon(Icons.leaderboard_rounded),
               icon: Icon(Icons.leaderboard),
               label: 'Planner',
             ),
 
             BottomNavigationBarItem(
-              activeIcon: Icon(Icons.menu_rounded),
-              icon: Icon(Icons.menu),
+              icon: Icon(Icons.settings),
               label: 'Options',
             ),
           ],

@@ -4,5 +4,6 @@ class Assets {
 
   static const String assetsBelievers = 'assets/believers.db';
   static const String fontHafs = 'assets/font/hafs.otf';
+  static const String imagesLogo = 'assets/images/logo.png';
 
 }

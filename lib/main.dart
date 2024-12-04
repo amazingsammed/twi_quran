@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-
+title: "Asante Twi Translation",
       themeMode: ThemeMode.system,
       theme: light,
       home: AuthPage(),

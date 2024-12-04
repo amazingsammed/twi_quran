@@ -4,6 +4,8 @@ class Surah{
   String english;
   String twi;
   String arabic;
+  String arabic2;
+  int bookmark;
 
 //<editor-fold desc="Data Methods">
   Surah({
@@ -12,6 +14,8 @@ class Surah{
     required this.english,
     required this.twi,
     required this.arabic,
+    required this.arabic2,
+    required this.bookmark,
   });
 
   @override
@@ -23,7 +27,9 @@ class Surah{
           ayah == other.ayah &&
           english == other.english &&
           twi == other.twi &&
-          arabic == other.arabic);
+          arabic == other.arabic &&
+          arabic2 == other.arabic2 &&
+          bookmark == other.bookmark);
 
   @override
   int get hashCode =>
@@ -31,7 +37,9 @@ class Surah{
       ayah.hashCode ^
       english.hashCode ^
       twi.hashCode ^
-      arabic.hashCode;
+      arabic.hashCode ^
+      arabic2.hashCode ^
+      bookmark.hashCode;
 
   @override
   String toString() {
@@ -41,6 +49,8 @@ class Surah{
         ' english: $english,' +
         ' twi: $twi,' +
         ' arabic: $arabic,' +
+        ' arabic2: $arabic2,' +
+        ' bookmark: $bookmark,' +
         '}';
   }
 
@@ -50,6 +60,8 @@ class Surah{
     String? english,
     String? twi,
     String? arabic,
+    String? arabic2,
+    int? bookmark,
   }) {
     return Surah(
       sura: sura ?? this.sura,
@@ -57,6 +69,8 @@ class Surah{
       english: english ?? this.english,
       twi: twi ?? this.twi,
       arabic: arabic ?? this.arabic,
+      arabic2: arabic2 ?? this.arabic2,
+      bookmark: bookmark ?? this.bookmark,
     );
   }
 
@@ -67,6 +81,8 @@ class Surah{
       'english': this.english,
       'twi': this.twi,
       'arabic': this.arabic,
+      'arabic2': this.arabic2,
+      'bookmark': this.bookmark,
     };
   }
 
@@ -77,6 +93,8 @@ class Surah{
       english: map['english'] as String,
       twi: map['twi'] as String,
       arabic: map['arabic'] as String,
+      arabic2: map['arabic2'] as String,
+      bookmark: map['bookmark'] as int,
     );
   }
 

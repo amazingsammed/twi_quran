@@ -12,36 +12,46 @@ class Home extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text("Quran in Twi"),
-      //   leading: IconButton(onPressed: (){},icon: Icon(Icons.menu),),
-      // actions: [
-      //   IconButton(onPressed: (){},icon: Icon(Icons.search),),
-      // ],
-      ),
-      body: FutureBuilder(
-            future: controller.getAllChapters(),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.hasData) {
-                return ListView.separated(itemCount: snapshot.data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                  Chapters chapter = snapshot.data[index];
-                    return ListTile(
-                      onTap: ()=>Get.to(()=>SurahPage(selectedchapter: chapter, chapters: snapshot.data,)),
-                      leading: CircleAvatar(child: Text("${index +1 }")),
 
-                      title: Text(chapter.title,style: TextStyle(color: Colors.green[800],fontWeight: FontWeight.bold),),
-                      subtitle: Text(chapter.titleEn),
-                      trailing: Text(chapter.titleAr,style: TextStyle(fontFamily: 'arabic'),),
-                    );
-                  }, separatorBuilder: (BuildContext context, int index) => Divider(color: Colors.grey.withOpacity(0.2),));
-              } else if (snapshot.hasError) {
-                return Icon(Icons.error_outline);
-              } else {
-                return Center(child: CircularProgressIndicator());
-              }
-            }));
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Text("Quran in Twi"),
+          //   leading: IconButton(onPressed: (){},icon: Icon(Icons.menu),),
+          // actions: [
+          //   IconButton(onPressed: (){},icon: Icon(Icons.search),),
+          // ],
+        ),
+        body: Obx(() {
+          return RefreshIndicator(
+            onRefresh: () async {
+              await controller.getAllChapters();
+            },
+            child: ListView.separated(
+                itemCount: controller.chapterList.value.length,
+                itemBuilder: (BuildContext context, int index) {
+                  Chapters chapter = controller.chapterList.value[index];
+                  return ListTile(
+                    onTap: () =>
+                        Get.to(() {
+                          controller.selectedChapter.clear();
+                          controller.selectedChapter.add(chapter);
+                          controller.getSurah(chapter);
+                          return SurahPage(
+                            selectedchapter: chapter);
+                        }),
+                    leading: CircleAvatar(child: Text("${index + 1 }")),
+
+                    title: Text(chapter.title, style: TextStyle(
+                        color: Colors.green[800], fontWeight: FontWeight.bold),),
+                    subtitle: Text(chapter.titleEn),
+                    trailing: Text(
+                      chapter.titleAr, style: TextStyle(fontFamily: 'arabic'),),
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) =>
+                    Divider(color: Colors.grey.withOpacity(0.2),)),
+          );
+        }));
   }
 }
 

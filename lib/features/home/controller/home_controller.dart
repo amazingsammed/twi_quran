@@ -12,32 +12,67 @@ import '../data/implementation/home_implentation.dart';
 class HomeController extends GetxController{
   final networkInfo = NetworkInfoImpl();
  var selectedChapter = <Chapters>[].obs;
+  var chapterList = <Chapters>[].obs;
+  var surahList = <Surah>[].obs;
+  var bookmarkList = <Surah>[].obs;
   HomeImplentation homeImplentation = HomeImplentation();
+
+  @override
+  Future<void> onInit() async {
+    await getAllChapters();
+    await getBookmarks();
+    // TODO: implement onInit
+    super.onInit();
+  }
+
+
  Future<List<Chapters>> getAllChapters() async {
-   // if (!await networkInfo.hasInternet()) {
-   //   showErrorSnackbar(message: 'no_internet'.tr);
-   //   return [];
-   // }
    var results = await homeImplentation.getAllChapters();
 
   return results.fold((Left){
    showErrorSnackbar(message: Left.message);
      return [];
    }, (Right){
+    chapterList.value = Right;
      return Right;
    });
 
  }
 
- Future<List<Surah>> getSurah(Chapters chapter) async{
-   var results = await homeImplentation.getSurah(chapter);
+ Future<List<Surah>> getSurah(Chapters? chapter) async{
+   var results = await homeImplentation.getSurah(chapter??selectedChapter.value[0]);
 
    return results.fold((Left){
      showErrorSnackbar(message: Left.message);
      return [];
    }, (Right){
+     surahList.value = Right;
      return Right;
    });
    return [];
+  }
+
+  Future<List<Surah>> getBookmarks() async{
+    var results = await homeImplentation.getBookmarks();
+
+    return results.fold((Left){
+      showErrorSnackbar(message: Left.message);
+      return [];
+    }, (Right){
+      bookmarkList.value = Right;
+      return Right;
+    });
+    return [];
+  }
+
+  bookmark(Surah surah) async {
+    var results = await homeImplentation.saveBookmark(surah);
+
+    return results.fold((Left){
+      showErrorSnackbar(message: Left.message);
+      return [];
+    }, (Right){
+      return Right;
+    });
   }
 }

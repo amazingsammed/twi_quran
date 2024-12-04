@@ -25,7 +25,7 @@ class Dbhelper  {
   initDb() async {
     print('Started DB');
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, "believers.db");
+    String path = join(documentsDirectory.path, "believers5.db");
     bool dbExists = await File(path).exists();
 
     if (!dbExists) {
@@ -61,6 +61,26 @@ Future<List<Chapters>> getChapters() async {
       results.add(Surah.fromMap(element));
     }
     return results;
+  }
+
+  Future<List<Surah>> getBookmarks() async {
+    List<Surah> results= [];
+    var dbClient = await db;
+    List<Map<String, dynamic>> lists =
+        await dbClient!.query('verses', where: "bookmark = 1");
+    for (var element in lists) {
+      results.add(Surah.fromMap(element));
+    }
+    return results;
+  }
+  Future<bool> saveBookmarks(Surah surah) async {
+    int id = surah.bookmark == 0 ?1:0;
+
+    List<Surah> results= [];
+    var dbClient = await db;
+    var lists =
+    await dbClient!.update('verses', {'bookmark':id},where: "sura = ${surah.sura} and ayah = ${surah.ayah}");
+   return true;
   }
 
 

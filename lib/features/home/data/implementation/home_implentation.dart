@@ -18,12 +18,38 @@ class HomeImplentation extends QuranRepository {
   }
 
   @override
-  Future<Either<Failure, List<Surah>>> getSurah(Chapters chapter) async{
+  Future<Either<Failure, List<Surah>>> getSurah(Chapters chapter) async {
     try {
       Dbhelper mydb = Dbhelper();
       return Right(await mydb.getSurah(chapter.index));
     } catch (e) {
-    return Left(Failure('Unable to fetch Verses'));
+      return Left(Failure('Unable to fetch Verses'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> deleteBookmark(Surah surah) {
+    // TODO: implement deleteBookmark
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, List<Surah>>> getBookmarks() async {
+    try {
+      Dbhelper mydb = Dbhelper();
+      return Right(await mydb.getBookmarks());
+    } catch (e) {
+      return Left(Failure('Unable to fetch Verses'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> saveBookmark(Surah surah) async {
+    try {
+      Dbhelper mydb = Dbhelper();
+      return Right(await mydb.saveBookmarks(surah));
+    } catch (e) {
+      return Left(Failure('Unable to fetch Verses'));
     }
   }
 }
