@@ -8,6 +8,8 @@ import 'package:twi_quran/features/home/domain/models/surah.dart';
 import 'package:twi_quran/features/home/presentation/home.dart';
 import 'package:twi_quran/shared/ui/custom_bottomsheet.dart';
 
+import 'component/surah_view_drawer.dart';
+
 class SurahView extends StatefulWidget {
   final Chapters chapter;
 
@@ -18,20 +20,22 @@ class SurahView extends StatefulWidget {
 }
 
 class _SurahViewState extends State<SurahView> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   HomeController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
     controller.getSurah(widget.chapter);
     return Scaffold(
-        drawer: Drawer(),
+        key: _scaffoldKey,
+        endDrawer: SurahViewDrawer(),
         appBar: AppBar(
 
           title: Text(widget.chapter.title),
           actions: [
             IconButton(
               onPressed: () {
-                Scaffold.of(context).openDrawer();
+                _scaffoldKey.currentState?.openEndDrawer();
               },
               icon: Icon(Icons.menu_open),
             ),
@@ -78,6 +82,13 @@ class _SurahViewState extends State<SurahView> {
                           ],
                         ),
                       ),
+                     if(widget.chapter.index!=9 &&widget.chapter.index!=1) Row(
+                       mainAxisAlignment: MainAxisAlignment.center,
+                       children: [
+                         Text('بسم الله الرحمن الرحيم',style: TextStyle(fontFamily: 'arabic',fontSize: 20,fontWeight: FontWeight.bold),),
+                       ],
+                     ),
+
                       VerseTile(surah: surah, index: index)
                     ],
                   );
@@ -87,42 +98,43 @@ class _SurahViewState extends State<SurahView> {
                   index: index,
                 );
               },
-              separatorBuilder: (BuildContext context, int index) => Divider(
-                color: Colors.grey.withOpacity(0.3),
-                thickness: 20,
-              ),
+              separatorBuilder: (BuildContext context, int index) =>
+                  Divider(
+                    color: Colors.grey.withOpacity(0.3),
+                    thickness: 20,
+                  ),
             );
           }),
         )
-        // bottomNavigationBar: BottomNavigationBar(
-        //   type: BottomNavigationBarType.fixed,
-        //   selectedItemColor: Colors.white,
-        //   unselectedItemColor: Colors.white,
-        //   items:   [
-        //     BottomNavigationBarItem(
-        //       activeIcon: Icon(Icons.home_max),
-        //       icon: Icon(Icons.home_filled),
-        //       label: 'Contents',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.bookmark_add),
-        //
-        //       label: 'Auto Scroll',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.play_arrow_outlined),
-        //       label: 'Play Audio',
-        //     ),
-        //
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.menu),
-        //       label: 'Planner',
-        //     ),
-        //   ],
-        //   onTap: (s){},
-        //
-        // ),
-        );
+      // bottomNavigationBar: BottomNavigationBar(
+      //   type: BottomNavigationBarType.fixed,
+      //   selectedItemColor: Colors.white,
+      //   unselectedItemColor: Colors.white,
+      //   items:   [
+      //     BottomNavigationBarItem(
+      //       activeIcon: Icon(Icons.home_max),
+      //       icon: Icon(Icons.home_filled),
+      //       label: 'Contents',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.bookmark_add),
+      //
+      //       label: 'Auto Scroll',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.play_arrow_outlined),
+      //       label: 'Play Audio',
+      //     ),
+      //
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.menu),
+      //       label: 'Planner',
+      //     ),
+      //   ],
+      //   onTap: (s){},
+      //
+      // ),
+    );
   }
 }
 
@@ -140,101 +152,105 @@ class VerseTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Text(
-                "${index + 1}",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
-              Spacer(),
-              IconButton(
-                  onPressed: () {
-                    showCustomBottomSheet(
-                        height: 200,
-                        child: Column(
-                          children: [
-                            ListTile(
-                              leading: Icon(Icons.copy),
-                              title: Text("Copy"),
-                              onTap: () {
-                                Clipboard.setData(ClipboardData(
-                                    text:
-                                        """Quran ${surah.sura}:${surah.ayah}\n${surah.english}\n${surah.twi}\nQuran Twi Translation"""));
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                            ListTile(
-                              leading: Icon(Icons.bookmark),
-                              title: Text(surah.bookmark != 1
-                                  ? "Bookmark"
-                                  : "Remove from Bookmark"),
-                              onTap: () async {
-                                await controller.bookmark(surah);
-                                await controller.getBookmarks();
-                                await controller.getSurah(
-                                    controller.selectedChapter.value[0]);
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        ));
-                  },
-                  icon: Icon(Icons.more_vert))
-            ],
-          ),
-          SizedBox(
-            height: 4,
-          ),
-          Container(
-              alignment: Alignment.centerRight,
-              child: Text(
-                surah.arabic2,
-                style: TextStyle(
-                    // fontFamily: 'arabic',
-                    fontSize: 18),
-                maxLines: 7,
-                textAlign: TextAlign.right,
-                overflow: TextOverflow.ellipsis,
-              )),
-          SizedBox(
-            height: 6,
-          ),
-          Text(
-            surah.english,
-            style: GoogleFonts.robotoCondensed(),
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          Text(
-            surah.twi,
-            style: GoogleFonts.arimo(),
-          ),
-          Divider(),
-          Row(
-            children: [
-              // IconButton(onPressed: (){}, icon: Icon(Icons.play_circle_outline,color: Colors.grey,)),
-              IconButton(
-                  onPressed: () async {
-                    await controller.bookmark(surah);
-                    await controller.getBookmarks();
-                    await controller
-                        .getSurah(controller.selectedChapter.value[0]);
-                  },
-                  icon: Icon(
-                    Icons.bookmark,
-                    color: surah.bookmark == 1 ? Colors.green : Colors.grey,
-                  )),
-            ],
-          )
-        ],
-      ),
-    );
+    return Obx(() {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(
+                  "${index + 1}",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                Spacer(),
+                IconButton(
+                    onPressed: () {
+                      showCustomBottomSheet(
+                          height: 200,
+                          child: Column(
+                            children: [
+                              ListTile(
+                                leading: Icon(Icons.copy),
+                                title: Text("Copy"),
+                                onTap: () {
+                                  Clipboard.setData(ClipboardData(
+                                      text:
+                                      """Quran ${surah.sura}:${surah
+                                          .ayah}\n${surah.english}\n${surah
+                                          .twi}\nQuran Twi Translation"""));
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              ListTile(
+                                leading: Icon(Icons.bookmark),
+                                title: Text(surah.bookmark != 1
+                                    ? "Bookmark"
+                                    : "Remove from Bookmark"),
+                                onTap: () async {
+                                  await controller.bookmark(surah);
+                                  await controller.getBookmarks();
+                                  await controller.getSurah(
+                                      controller.selectedChapter.value[0]);
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          ));
+                    },
+                    icon: Icon(Icons.more_vert))
+              ],
+            ),
+            SizedBox(
+              height: 4,
+            ),
+            if(controller.showArabic.value) Container(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  surah.arabic,
+                  style: TextStyle(
+                     fontFamily: 'arabic',
+                      fontSize: 18),
+                  maxLines: 7,
+                  textAlign: TextAlign.right,
+                  overflow: TextOverflow.ellipsis,
+                )),
+            if(controller.showArabic.value) SizedBox(
+              height: 6,
+            ),
+            if(controller.showEnglish.value) Text(
+              surah.english,
+              style: GoogleFonts.robotoCondensed(),
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            if(controller.showAsanteTwi.value) Text(
+              surah.twi,
+              style: GoogleFonts.arimo(),
+            ),
+            Divider(),
+            Row(
+              children: [
+                // IconButton(onPressed: (){}, icon: Icon(Icons.play_circle_outline,color: Colors.grey,)),
+                IconButton(
+                    onPressed: () async {
+                      await controller.bookmark(surah);
+                      await controller.getBookmarks();
+                      await controller
+                          .getSurah(controller.selectedChapter.value[0]);
+                    },
+                    icon: Icon(
+                      Icons.bookmark,
+                      color: surah.bookmark == 1 ? Colors.green : Colors.grey,
+                    )),
+              ],
+            )
+          ],
+        ),
+      );
+    });
   }
 }
 

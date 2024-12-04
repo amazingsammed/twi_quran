@@ -23,17 +23,24 @@ class AuthPage extends StatelessWidget {
           SizedBox(height: 10,),
           Text("Translation of the Quran meanings into Ashanti by Sheikh Haroun Ismaeel",style: TextStyle(fontSize: 20),),
           SizedBox(height: 50,),
-          Text("Please note: The translation may not capture the full depth and nuances of the original Arabic text."),
+          Text("Please note: The translation may not capture the full depth and nuances of the original Arabic text.",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
           SizedBox(height: 80,),
-          Text("More features on the way",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+          Text("Source of data: \n 1.QuranEnc API \n 2.FawazAhmed API",style: TextStyle(fontSize: 20),),
         ],
       ),
     ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(10),
-        child: ElevatedButton(onPressed: (){
+        child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll(Colors.green),
+            foregroundColor: WidgetStatePropertyAll(Colors.white),
+            shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+padding: WidgetStatePropertyAll(EdgeInsets.all(12))
+          ),
+          onPressed: (){
           Get.offAll(()=>Master());
-        },child: Text('Proceed'),),
+        },child: Text('Proceed',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),),
       ),
     );
   }

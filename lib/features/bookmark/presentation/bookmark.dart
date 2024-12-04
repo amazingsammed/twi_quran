@@ -5,6 +5,7 @@ import 'package:twi_quran/features/home/presentation/surah_view.dart';
 
 import '../../home/controller/home_controller.dart';
 import '../../home/domain/models/surah.dart';
+import '../../home/presentation/component/surah_view_drawer.dart';
 
 class Bookmark extends GetView<HomeController> {
   const Bookmark({super.key});
@@ -12,6 +13,7 @@ class Bookmark extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: SurahViewDrawer(),
       appBar: AppBar(
         title: Text('Bookmark'),
       ),
@@ -24,11 +26,13 @@ class Bookmark extends GetView<HomeController> {
             itemCount: controller.bookmarkList.value.length,
             itemBuilder: (BuildContext context, int index) {
               Surah surah = controller.bookmarkList.value[index];
-              return Column(
-                children: [
-                  Text(controller.chapterList.where((e)=>e.index==surah.sura).first.title),
-                  VerseTile(surah: surah, index: surah.ayah),
-                ],
+              return Card(
+                child: Column(
+                  children: [
+                    Text(controller.chapterList.where((e)=>e.index==surah.sura).first.title),
+                    VerseTile(surah: surah, index: surah.ayah),
+                  ],
+                ),
               );
             },
             separatorBuilder: (BuildContext context, int index) =>

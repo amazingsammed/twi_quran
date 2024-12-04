@@ -17,6 +17,10 @@ class HomeController extends GetxController{
   var bookmarkList = <Surah>[].obs;
   HomeImplentation homeImplentation = HomeImplentation();
 
+  var showArabic = true.obs;
+  var showEnglish = false.obs;
+  var showAsanteTwi = true.obs;
+
   @override
   Future<void> onInit() async {
     await getAllChapters();

@@ -39,7 +39,7 @@ class _MasterState extends State<Master> with SingleTickerProviderStateMixin {
     List<Widget> screens = [
       Home(),
       Bookmark(),
-      Translatorpage(),
+      // Translatorpage(),
       Optionspage(),
 
     ];
@@ -68,10 +68,10 @@ class _MasterState extends State<Master> with SingleTickerProviderStateMixin {
               icon: Icon(Icons.bookmark),
               label: 'Bookmark',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.leaderboard),
-              label: 'Planner',
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.leaderboard),
+            //   label: 'Planner',
+            // ),
 
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),

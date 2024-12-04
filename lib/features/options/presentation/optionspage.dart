@@ -6,8 +6,12 @@ class Optionspage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    appBar: AppBar(),
-    body: Container()
+   appBar: AppBar(
+     title: Text("Options"),
+   ),
+    body: Center(
+      child: Text("Coming Soon" ,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+    )
     );
   }
 }
