@@ -15,7 +15,7 @@ class Home extends GetView<HomeController> {
 
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Text("Quran in Twi"),
+          title: const Text("Quran Kronkron"),
           //   leading: IconButton(onPressed: (){},icon: Icon(Icons.menu),),
           // actions: [
           //   IconButton(onPressed: (){},icon: Icon(Icons.search),),

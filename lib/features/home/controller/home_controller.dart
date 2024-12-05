@@ -21,6 +21,10 @@ class HomeController extends GetxController{
   var showEnglish = false.obs;
   var showAsanteTwi = true.obs;
 
+  var fontsizeAsanteTwi = 0.45.obs;
+  var fontsize_english = 0.3.obs;
+  var fontsize_arabic = 0.4.obs;
+
   @override
   Future<void> onInit() async {
     await getAllChapters();

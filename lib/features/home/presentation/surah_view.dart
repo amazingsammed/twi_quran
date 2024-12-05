@@ -9,6 +9,7 @@ import 'package:twi_quran/features/home/presentation/home.dart';
 import 'package:twi_quran/shared/ui/custom_bottomsheet.dart';
 
 import 'component/surah_view_drawer.dart';
+import 'component/verse_tile.dart';
 
 class SurahView extends StatefulWidget {
   final Chapters chapter;
@@ -138,121 +139,7 @@ class _SurahViewState extends State<SurahView> {
   }
 }
 
-class VerseTile extends StatelessWidget {
-  VerseTile({
-    super.key,
-    required this.surah,
-    required this.index,
-  });
 
-  final Surah surah;
-  final int index;
-
-  final HomeController controller = Get.find();
-
-  @override
-  Widget build(BuildContext context) {
-    return Obx(() {
-      return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  "${index + 1}",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                Spacer(),
-                IconButton(
-                    onPressed: () {
-                      showCustomBottomSheet(
-                          height: 200,
-                          child: Column(
-                            children: [
-                              ListTile(
-                                leading: Icon(Icons.copy),
-                                title: Text("Copy"),
-                                onTap: () {
-                                  Clipboard.setData(ClipboardData(
-                                      text:
-                                      """Quran ${surah.sura}:${surah
-                                          .ayah}\n${surah.english}\n${surah
-                                          .twi}\nQuran Twi Translation"""));
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                              ListTile(
-                                leading: Icon(Icons.bookmark),
-                                title: Text(surah.bookmark != 1
-                                    ? "Bookmark"
-                                    : "Remove from Bookmark"),
-                                onTap: () async {
-                                  await controller.bookmark(surah);
-                                  await controller.getBookmarks();
-                                  await controller.getSurah(
-                                      controller.selectedChapter.value[0]);
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ],
-                          ));
-                    },
-                    icon: Icon(Icons.more_vert))
-              ],
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            if(controller.showArabic.value) Container(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  surah.arabic,
-                  style: TextStyle(
-                     fontFamily: 'arabic',
-                      fontSize: 18),
-                  maxLines: 7,
-                  textAlign: TextAlign.right,
-                  overflow: TextOverflow.ellipsis,
-                )),
-            if(controller.showArabic.value) SizedBox(
-              height: 6,
-            ),
-            if(controller.showEnglish.value) Text(
-              surah.english,
-              style: GoogleFonts.robotoCondensed(),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            if(controller.showAsanteTwi.value) Text(
-              surah.twi,
-              style: GoogleFonts.arimo(),
-            ),
-            Divider(),
-            Row(
-              children: [
-                // IconButton(onPressed: (){}, icon: Icon(Icons.play_circle_outline,color: Colors.grey,)),
-                IconButton(
-                    onPressed: () async {
-                      await controller.bookmark(surah);
-                      await controller.getBookmarks();
-                      await controller
-                          .getSurah(controller.selectedChapter.value[0]);
-                    },
-                    icon: Icon(
-                      Icons.bookmark,
-                      color: surah.bookmark == 1 ? Colors.green : Colors.grey,
-                    )),
-              ],
-            )
-          ],
-        ),
-      );
-    });
-  }
-}
 
 class SurahPage extends StatefulWidget {
   final Chapters selectedchapter;

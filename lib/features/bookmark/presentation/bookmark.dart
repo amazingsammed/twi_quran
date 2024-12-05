@@ -6,6 +6,7 @@ import 'package:twi_quran/features/home/presentation/surah_view.dart';
 import '../../home/controller/home_controller.dart';
 import '../../home/domain/models/surah.dart';
 import '../../home/presentation/component/surah_view_drawer.dart';
+import '../../home/presentation/component/verse_tile.dart';
 
 class Bookmark extends GetView<HomeController> {
   const Bookmark({super.key});
@@ -27,6 +28,7 @@ class Bookmark extends GetView<HomeController> {
             itemBuilder: (BuildContext context, int index) {
               Surah surah = controller.bookmarkList.value[index];
               return Card(
+                margin: EdgeInsets.symmetric(horizontal: 10,vertical: 3),
                 child: Column(
                   children: [
                     Text(controller.chapterList.where((e)=>e.index==surah.sura).first.title),

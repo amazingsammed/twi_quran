@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../../home/presentation/component/surah_view_drawer.dart';
+
 class Optionspage extends StatelessWidget {
   const Optionspage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    return SurahViewDrawer();
     return Scaffold(
    appBar: AppBar(
      title: Text("Options"),
