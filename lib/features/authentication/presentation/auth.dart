@@ -24,9 +24,6 @@ class AuthPage extends StatelessWidget {
           Text("Translation of the Quran meanings into Ashanti by Sheikh Haroun Ismaeel",style: TextStyle(fontSize: 20),),
           SizedBox(height: 50,),
           Text("Please note: The translation may not capture the full depth and nuances of the original Arabic text.",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
-          SizedBox(height: 50,),
-          Text("Yɛsrɛ Hy3 no nso: Twi Nkyerɛaseɛ ntumi mma Arabic Nkyerɛaseɛ no pɛpɛɛpɛ",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
-
           SizedBox(height: 80,),
           Text("Y3 Nya firii:  QuranEnc API ne FawazAhmed API",style: TextStyle(fontSize: 20),),
         ],

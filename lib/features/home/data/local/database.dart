@@ -35,8 +35,8 @@ class Dbhelper  {
       await File(path).writeAsBytes(bytes, flush: true);
 
     }
-    sqfliteFfiInit();
-    databaseFactory = databaseFactoryFfi;
+    // sqfliteFfiInit();
+    // databaseFactory = databaseFactoryFfi;
 
     var theDb = await databaseFactory.openDatabase(path);
     return theDb;
@@ -75,7 +75,6 @@ Future<List<Chapters>> getChapters() async {
   }
   Future<bool> saveBookmarks(Surah surah) async {
     int id = surah.bookmark == 0 ?1:0;
-
     List<Surah> results= [];
     var dbClient = await db;
     var lists =

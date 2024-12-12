@@ -104,23 +104,24 @@ class VerseTile extends StatelessWidget {
                 fontSize:  (controller.fontsizeAsanteTwi.value/1)*50
               ),
             ),
-            Divider(),
-            Row(
-              children: [
-                // IconButton(onPressed: (){}, icon: Icon(Icons.play_circle_outline,color: Colors.grey,)),
-                IconButton(
-                    onPressed: () async {
-                      await controller.bookmark(surah);
-                      await controller.getBookmarks();
-                      await controller
-                          .getSurah(controller.selectedChapter.value[0]);
-                    },
-                    icon: Icon(
-                      Icons.bookmark,
-                      color: surah.bookmark == 1 ? Colors.green : Colors.grey,
-                    )),
-              ],
-            )
+           // Divider(),
+           //  Row(
+           //    children: [
+           //      // IconButton(onPressed: (){}, icon: Icon(Icons.play_circle_outline,color: Colors.grey,)),
+           //      IconButton(
+           //          onPressed: () async {
+           //            await controller.bookmark(surah);
+           //            await controller.getBookmarks();
+           //            await controller
+           //                .getSurah(controller.selectedChapter.value[0]);
+           //          },
+           //          icon: Icon(
+           //            Icons.bookmark,
+           //            color: surah.bookmark == 1 ? Colors.green : Colors.grey,
+           //          )
+           //      ),
+           //    ],
+           //  )
           ],
         ),
       );

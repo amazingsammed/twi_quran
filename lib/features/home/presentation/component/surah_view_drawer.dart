@@ -26,7 +26,7 @@ class SurahViewDrawer extends GetView<HomeController> {
               value: controller.showArabic.value,
               onChanged: (e) {
                 controller.showArabic.value = e!;
-                Navigator.of(context).pop();
+              //  Navigator.of(context).pop();
               },
               title: Text("Show Arabic"),
             ),
@@ -34,7 +34,7 @@ class SurahViewDrawer extends GetView<HomeController> {
               value: controller.showAsanteTwi.value,
               onChanged: (e) {
                 controller.showAsanteTwi.value = e!;
-                Navigator.of(context).pop();
+               // Navigator.of(context).pop();
               },
               title: Text("Show Asanti Twi"),
             ),
@@ -42,7 +42,7 @@ class SurahViewDrawer extends GetView<HomeController> {
               value: controller.showEnglish.value,
               onChanged: (e) {
                 controller.showEnglish.value = e!;
-                Navigator.of(context).pop();
+               // Navigator.of(context).pop();
               },
               title: Text("Show English"),
             ),
