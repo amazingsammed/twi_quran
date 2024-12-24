@@ -12,14 +12,25 @@ class Home extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: const Text("Quran Kronkron"),
           //   leading: IconButton(onPressed: (){},icon: Icon(Icons.menu),),
-          // actions: [
-          //   IconButton(onPressed: (){},icon: Icon(Icons.search),),
-          // ],
+          actions: [
+            IconButton(
+              onPressed: () {
+                showAboutDialog(
+                    context: context,
+                    applicationIcon: Image.asset(
+                      'assets/images/logo.png',
+                      width: 50,
+                      height: 50,
+                    ),
+                    applicationName: "Quran Kronkron");
+              },
+              icon: Icon(Icons.info),
+            ),
+          ],
         ),
         body: Obx(() {
           return RefreshIndicator(
@@ -31,29 +42,30 @@ class Home extends GetView<HomeController> {
                 itemBuilder: (BuildContext context, int index) {
                   Chapters chapter = controller.chapterList.value[index];
                   return ListTile(
-                    onTap: () =>
-                        Get.to(() {
-                          controller.selectedChapter.clear();
-                          controller.selectedChapter.add(chapter);
-                          controller.getSurah(chapter);
-                          return SurahPage(
-                            selectedchapter: chapter);
-                        }),
-                    leading: CircleAvatar(child: Text("${index + 1 }")),
-
-                    title: Text(chapter.title, style: TextStyle(
-                        color: Colors.green[800], fontWeight: FontWeight.bold),),
+                    onTap: () => Get.to(() {
+                      controller.selectedChapter.clear();
+                      controller.selectedChapter.add(chapter);
+                      controller.getSurah(chapter);
+                      return SurahPage(selectedchapter: chapter);
+                    }),
+                    leading: CircleAvatar(child: Text("${index + 1}")),
+                    title: Text(
+                      chapter.title,
+                      style: TextStyle(
+                          color: Colors.green[800],
+                          fontWeight: FontWeight.bold),
+                    ),
                     subtitle: Text(chapter.titleEn),
                     trailing: Text(
-                      chapter.titleAr, style: TextStyle(fontFamily: 'arabic'),),
+                      chapter.titleAr,
+                      style: TextStyle(fontFamily: 'arabic'),
+                    ),
                   );
                 },
-                separatorBuilder: (BuildContext context, int index) =>
-                    Divider(color: Colors.grey.withOpacity(0.2),)),
+                separatorBuilder: (BuildContext context, int index) => Divider(
+                      color: Colors.grey.withOpacity(0.2),
+                    )),
           );
         }));
   }
 }
-
-
-

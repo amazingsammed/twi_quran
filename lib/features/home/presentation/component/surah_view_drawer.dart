@@ -15,6 +15,10 @@ class SurahViewDrawer extends GetView<HomeController> {
         return ListView(
           children: [
             UserAccountsDrawerHeader(
+
+              onDetailsPressed: (){
+                Get.back();
+              },
               decoration: BoxDecoration(
                 color: Colors.green[900],
               ),
