@@ -1,9 +1,8 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:twi_quran/features/home/controller/home_controller.dart';
-import 'package:twi_quran/shared/utils/launch_url.dart';
+
 
 class SurahViewDrawer extends GetView<HomeController> {
   const SurahViewDrawer({super.key});
@@ -15,10 +14,6 @@ class SurahViewDrawer extends GetView<HomeController> {
         return ListView(
           children: [
             UserAccountsDrawerHeader(
-
-              onDetailsPressed: (){
-                Get.back();
-              },
               decoration: BoxDecoration(
                 color: Colors.green[900],
               ),
@@ -87,18 +82,6 @@ class SurahViewDrawer extends GetView<HomeController> {
               trailing: Text((controller.fontsize_english.value / 1 * 50)
                   .toStringAsFixed(1)),
             ),
-            Card(
-margin: EdgeInsets.symmetric(horizontal: 15),
-              child: ListTile(
-                leading: Icon(Icons.message),
-                title: Text("Contact Us"),
-                trailing: Icon(Icons.chevron_right),
-                subtitle: Text("To support, contribute or report issue"),
-                onTap: (){
-                  openLink("https://forms.gle/Lo69ux4HSQ1WCStJA");
-                },
-              ),
-            )
           ],
         );
       }),

@@ -10,6 +10,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:twi_quran/features/home/domain/models/chapter.dart';
 import 'package:twi_quran/features/home/domain/models/surah.dart';
+import 'package:twi_quran/responsive.dart';
 
 
 
@@ -23,7 +24,6 @@ class Dbhelper  {
   }
 
   initDb() async {
-    print('Started DB');
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, "believers34.db");
     bool dbExists = await File(path).exists();
@@ -35,8 +35,11 @@ class Dbhelper  {
       await File(path).writeAsBytes(bytes, flush: true);
 
     }
+
+
     // sqfliteFfiInit();
     // databaseFactory = databaseFactoryFfi;
+
 
     var theDb = await databaseFactory.openDatabase(path);
     return theDb;

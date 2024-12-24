@@ -14,11 +14,12 @@ class Home extends GetView<HomeController> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Text("Quran Kronkron"),
+          title: const Text("Al-Quran Twi"),
           //   leading: IconButton(onPressed: (){},icon: Icon(Icons.menu),),
           actions: [
             IconButton(
               onPressed: () {
+
                 showAboutDialog(
                     context: context,
                     applicationIcon: Image.asset(
@@ -26,7 +27,8 @@ class Home extends GetView<HomeController> {
                       width: 50,
                       height: 50,
                     ),
-                    applicationName: "Quran Kronkron");
+                    applicationVersion: "Ghana",
+                    applicationName: "Twi Quran",);
               },
               icon: Icon(Icons.info),
             ),

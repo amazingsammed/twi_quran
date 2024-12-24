@@ -86,7 +86,7 @@ class _SurahViewState extends State<SurahView> {
                      if(widget.chapter.index!=9 &&widget.chapter.index!=1) Row(
                        mainAxisAlignment: MainAxisAlignment.center,
                        children: [
-                         Text('بسم الله الرحمن الرحيم',style: TextStyle(fontFamily: 'arabic',fontSize: 20,fontWeight: FontWeight.bold),),
+                         Text('بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ',style: TextStyle(fontFamily: 'arabic',fontSize: 20,fontWeight: FontWeight.bold),),
                        ],
                      ),
 

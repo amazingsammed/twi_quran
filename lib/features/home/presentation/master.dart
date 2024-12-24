@@ -39,7 +39,7 @@ class _MasterState extends State<Master> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     List Tabs = [
       {"icon": Icons.home, "title": "Home"},
-      {"icon": Icons.bookmark, "title": "BookMark"},
+      {"icon": Icons.bookmark, "title": "Bookmark"},
       {"icon": Icons.settings, "title": "Options"},
     ];
 

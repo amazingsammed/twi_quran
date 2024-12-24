@@ -50,6 +50,7 @@ dependencies:
   sqflite_common_ffi: ^2.3.3
   flutter_launcher_icons: ^0.14.1
   upgrader: ^10.3.0
+  just_audio: ^0.9.42
 
 dev_dependencies:
   flutter_test:

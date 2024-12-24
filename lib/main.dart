@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: light,
       home: UpgradeAlert(
           showIgnore: false,
-          child: AuthPage()),
+          child: const AuthPage()),
     );
   }
 }
