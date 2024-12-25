@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:twi_quran/features/audio_player/twiaudioplayer.dart';
 
 import '../../../../shared/ui/custom_bottomsheet.dart';
 import '../../controller/home_controller.dart';
@@ -19,6 +20,7 @@ class VerseTile extends StatelessWidget {
   final int index;
 
   final HomeController controller = Get.find();
+  final TwiAudioPlayer audioPlayer =Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -104,24 +106,26 @@ class VerseTile extends StatelessWidget {
                 fontSize:  (controller.fontsizeAsanteTwi.value/1)*50
               ),
             ),
-           // Divider(),
-           //  Row(
-           //    children: [
-           //      // IconButton(onPressed: (){}, icon: Icon(Icons.play_circle_outline,color: Colors.grey,)),
-           //      IconButton(
-           //          onPressed: () async {
-           //            await controller.bookmark(surah);
-           //            await controller.getBookmarks();
-           //            await controller
-           //                .getSurah(controller.selectedChapter.value[0]);
-           //          },
-           //          icon: Icon(
-           //            Icons.bookmark,
-           //            color: surah.bookmark == 1 ? Colors.green : Colors.grey,
-           //          )
-           //      ),
-           //    ],
-           //  )
+           Divider(),
+            Row(
+              children: [
+                IconButton(onPressed: () async {
+                 await audioPlayer.playSegment(surah);
+                }, icon: Icon(Icons.play_circle_outline,color: Colors.grey,)),
+                IconButton(
+                    onPressed: () async {
+                      await controller.bookmark(surah);
+                      await controller.getBookmarks();
+                      await controller
+                          .getSurah(controller.selectedChapter.value[0]);
+                    },
+                    icon: Icon(
+                      Icons.bookmark,
+                      color: surah.bookmark == 1 ? Colors.green : Colors.grey,
+                    )
+                ),
+              ],
+            )
           ],
         ),
       );

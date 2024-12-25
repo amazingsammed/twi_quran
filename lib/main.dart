@@ -6,6 +6,7 @@ import 'package:twi_quran/shared/network/network.dart';
 import 'package:twi_quran/shared/theme/theme.dart';
 import 'package:upgrader/upgrader.dart';
 
+import 'features/audio_player/twiaudioplayer.dart';
 import 'features/home/controller/home_controller.dart';
 import 'features/home/presentation/home.dart';
 import 'features/home/presentation/master.dart';
@@ -13,7 +14,7 @@ import 'features/home/presentation/master.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+Get.put(TwiAudioPlayer());
   Get.put(HomeController());
   runApp(const MyApp());
 }

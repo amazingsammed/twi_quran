@@ -51,6 +51,7 @@ dependencies:
   flutter_launcher_icons: ^0.14.1
   upgrader: ^10.3.0
   just_audio: ^0.9.42
+  just_audio_windows: ^0.2.2
 
 dev_dependencies:
   flutter_test:
@@ -91,6 +92,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/audio/
 
   fonts:
     - family: arabic
