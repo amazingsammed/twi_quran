@@ -1,17 +1,17 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Translatorpage extends StatelessWidget {
-  const Translatorpage({super.key});
+class TranslatorPage extends StatelessWidget {
+const TranslatorPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-    appBar: AppBar(
-      title: Text("English to Twi Translator"),
-    ),
-    body: Container()
-    );
-  }
+@override
+Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(
+  title: Text("Translator"),
+),
+body: Center(
+child: Text("Coming Soon"),
+));
+}
 }

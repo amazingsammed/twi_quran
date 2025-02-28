@@ -24,7 +24,7 @@ class SurahView extends StatefulWidget {
 class _SurahViewState extends State<SurahView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   HomeController controller = Get.find();
-  TwiAudioPlayer audioPlayer = Get.find();
+ TwiAudioPlayer audioPlayer = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -115,21 +115,22 @@ class _SurahViewState extends State<SurahView> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
+
           color: Colors.green[800]
         ),
         height: 50,
         child: Row(
           children: [
             IconButton(onPressed: () async {
-              audioPlayer.play();
-            }, icon: Icon(Icons.play_arrow_outlined)),
+             audioPlayer.play();
+            }, icon: Icon(Icons.play_arrow_outlined,color: Colors.white,)),
             IconButton(onPressed: () async {
-              audioPlayer.pause();
-            }, icon: Icon(Icons.pause)),
+              //audioPlayer.pause();
+            }, icon: Icon(Icons.pause,color: Colors.white,)),
 
-            Obx(() {
-              return Text(audioPlayer.currentTime.value.toString());
-            })
+            // Obx(() {
+            //   return Text(audioPlayer.currentTime.value.toString());
+            // })
           ],
         ),
       ),

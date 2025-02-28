@@ -39,7 +39,7 @@ class Dbhelper  {
 
     // sqfliteFfiInit();
     // databaseFactory = databaseFactoryFfi;
-
+    //
 
     var theDb = await databaseFactory.openDatabase(path);
     return theDb;

@@ -51,7 +51,7 @@ class Optionspage extends StatelessWidget {
                 title: "Translator",
                 icon: Icons.translate,
                 onTap: () {
-                  Get.to(() => Translatorpage());
+                  Get.to(() => TranslatorPage());
                 },
               ),
               OptionTile(

@@ -2,12 +2,14 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:record/record.dart';
 import 'package:twi_quran/features/home/domain/models/surah.dart';
 
 class TwiAudioPlayer extends GetxController {
   var isPlaying = false.obs;
   var currentTime = 1.0.obs;
   late AudioPlayer _audioPlayer;
+  final record = AudioRecorder();
 
   @override
   Future<void> onInit() async {
@@ -15,11 +17,10 @@ class TwiAudioPlayer extends GetxController {
     super.onInit();
 
     _audioPlayer = AudioPlayer();
-    // Load your Quran audio file
-    await _audioPlayer
-        .setAsset("assets/audio/114.mp3"); // Use your actual URL or local asset
 
-    // Listen for the playback position
+    await _audioPlayer.setAsset("assets/audio/114.mp3");
+
+
     _audioPlayer.positionStream.listen((position) {
       currentTime.value = position.inMilliseconds.toDouble();
     });
@@ -42,6 +43,7 @@ class TwiAudioPlayer extends GetxController {
   }
 
   playSegment(Surah surah) async {
+    print(surah.bookmark);
     List data = [
       {"sura": 114, "ayah": 1, "time": 9537, "NAVICAT_ROWID": 6231},
       {"sura": 114, "ayah": 2, "time": 11228, "NAVICAT_ROWID": 6232},

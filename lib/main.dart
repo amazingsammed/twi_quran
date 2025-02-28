@@ -4,6 +4,7 @@ import 'package:translator/translator.dart';
 import 'package:twi_quran/features/authentication/presentation/auth.dart';
 import 'package:twi_quran/shared/network/network.dart';
 import 'package:twi_quran/shared/theme/theme.dart';
+import 'package:twi_quran/test.dart';
 import 'package:upgrader/upgrader.dart';
 
 import 'features/audio_player/twiaudioplayer.dart';

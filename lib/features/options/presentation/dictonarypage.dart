@@ -8,11 +8,7 @@ class DictonaryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
     appBar: AppBar(title: Text('Dictionary'),actions: [
-      IconButton(onPressed: (){
-        showCustomBottomSheet(child: Container(
-          child: Text("Coming Soon"),
-        ));
-      }, icon: Icon(Icons.search))
+
     ],),
     body: Container(
       child: Center(
