@@ -107,33 +107,33 @@ class _SurahViewState extends State<SurahView> {
             },
             separatorBuilder: (BuildContext context, int index) =>
                 Divider(
-                  color: Colors.grey.withOpacity(0.3),
+                  color: Colors.grey.withOpacity(0.1),
                   thickness: 20,
                 ),
           );
         }),
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-
-          color: Colors.green[800]
-        ),
-        height: 50,
-        child: Row(
-          children: [
-            IconButton(onPressed: () async {
-             audioPlayer.play();
-            }, icon: Icon(Icons.play_arrow_outlined,color: Colors.white,)),
-            IconButton(onPressed: () async {
-              //audioPlayer.pause();
-            }, icon: Icon(Icons.pause,color: Colors.white,)),
-
-            // Obx(() {
-            //   return Text(audioPlayer.currentTime.value.toString());
-            // })
-          ],
-        ),
-      ),
+      // bottomNavigationBar: Container(
+      //   decoration: BoxDecoration(
+      //
+      //     color: Colors.green[800]
+      //   ),
+      //   height: 50,
+      //   child: Row(
+      //     children: [
+      //       IconButton(onPressed: () async {
+      //        audioPlayer.play();
+      //       }, icon: Icon(Icons.play_arrow_outlined,color: Colors.white,)),
+      //       IconButton(onPressed: () async {
+      //         //audioPlayer.pause();
+      //       }, icon: Icon(Icons.pause,color: Colors.white,)),
+      //
+      //       // Obx(() {
+      //       //   return Text(audioPlayer.currentTime.value.toString());
+      //       // })
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

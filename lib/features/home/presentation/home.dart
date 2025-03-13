@@ -17,21 +17,6 @@ class Home extends GetView<HomeController> {
           title: const Text("Al-Quran Twi"),
           //   leading: IconButton(onPressed: (){},icon: Icon(Icons.menu),),
           actions: [
-            IconButton(
-              onPressed: () {
-
-                showAboutDialog(
-                    context: context,
-                    applicationIcon: Image.asset(
-                      'assets/images/logo.png',
-                      width: 50,
-                      height: 50,
-                    ),
-                    applicationVersion: "Ghana",
-                    applicationName: "Twi Quran",);
-              },
-              icon: Icon(Icons.info),
-            ),
           ],
         ),
         body: Obx(() {
@@ -65,7 +50,8 @@ class Home extends GetView<HomeController> {
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) => Divider(
-                      color: Colors.grey.withOpacity(0.2),
+                  thickness: 2,
+                      color: Colors.grey.withOpacity(0.1),
                     )),
           );
         }));

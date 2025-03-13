@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "112592587889",
+    "project_id": "my-shahaada",
+    "storage_bucket": "my-shahaada.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112592587889:android:162b06d286557ed7f9dfd0",
+        "android_client_info": {
+          "package_name": "com.trustmedia.twi_quran"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8FoWTBygcwM4l1ru3yRlGCy0RR97DqwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

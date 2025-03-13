@@ -3,6 +3,9 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  cloud_firestore
+  firebase_core
+  firebase_storage
   just_audio_windows
   record_windows
   screen_retriever_windows

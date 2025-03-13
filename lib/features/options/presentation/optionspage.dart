@@ -31,7 +31,17 @@ class Optionspage extends StatelessWidget {
                   subtitle: Text("Muslim@gmail.com"),
                 ),
               ),
-              // OptionTile(title: "Account", icon: Icons.person),
+              OptionTile(title: "Licences", icon: Icons.file_copy,onTap: (){
+                showAboutDialog(
+                  context: context,
+                  applicationIcon: Image.asset(
+                    'assets/images/logo.png',
+                    width: 50,
+                    height: 50,
+                  ),
+                  applicationVersion: "Ghana",
+                  applicationName: "Twi Quran",);
+              },),
               OptionTile(
                 title: "Dictionary",
                 icon: Icons.book,
@@ -60,7 +70,7 @@ class Optionspage extends StatelessWidget {
                               title: Text("Whatsapp"),
                               leading: Icon(Icons.chat),
                               onTap: () {
-                                openLink("https://wa.me/233509912357");
+                                openLink("https://chat.whatsapp.com/EZLeSYjdZr6KCE9GxTClav");
                               },
                             ),
                             ListTile(
