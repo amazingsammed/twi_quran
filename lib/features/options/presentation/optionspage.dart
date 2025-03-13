@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:twi_quran/features/options/presentation/settingspage.dart';
-import 'package:twi_quran/features/translator/presentation/translatorpage.dart';
 import 'package:twi_quran/shared/ui/custom_bottomsheet.dart';
 
 import '../../../shared/utils/launch_url.dart';
@@ -45,13 +44,6 @@ class Optionspage extends StatelessWidget {
                 icon: Icons.settings,
                 onTap: () {
                   Get.to(() => SettingsPage());
-                },
-              ),
-              OptionTile(
-                title: "Translator",
-                icon: Icons.translate,
-                onTap: () {
-                  Get.to(() => TranslatorPage());
                 },
               ),
               OptionTile(

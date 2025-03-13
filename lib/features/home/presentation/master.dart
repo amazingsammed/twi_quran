@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:twi_quran/responsive.dart';
 
 import '../../bookmark/presentation/bookmark.dart';
+import '../../library/presentation/librarypage.dart';
 import '../../options/presentation/optionspage.dart';
-import '../../translator/presentation/translatorpage.dart';
+
 import 'home.dart';
 
 class Master extends StatefulWidget {
@@ -38,13 +39,15 @@ class _MasterState extends State<Master> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     List Tabs = [
-      {"icon": Icons.home, "title": "Home"},
-      {"icon": Icons.bookmark, "title": "Bookmark"},
-      {"icon": Icons.settings, "title": "Options"},
+      {"icon": Icons.home_rounded, "title": "Home"},
+      {"icon": Icons.local_library_rounded, "title": "Library"},
+      {"icon": Icons.bookmark_rounded, "title": "Bookmark"},
+      {"icon": Icons.settings_rounded, "title": "Options"},
     ];
 
     List<Widget> screens = [
       Home(),
+      Library(),
       Bookmark(),
       // Translatorpage(),
       Optionspage(),
