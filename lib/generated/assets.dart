@@ -3,6 +3,7 @@ class Assets {
   Assets._();
 
   static const String assetsBelievers = 'assets/believers.db';
+  static const String assetsVerses = 'assets/verses.csv';
   static const String audio114 = 'assets/audio/114.mp3';
   static const String fontHafs = 'assets/font/hafs.otf';
   static const String imagesLogo = 'assets/images/logo.png';
