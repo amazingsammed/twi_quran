@@ -7,6 +7,8 @@ class Assets {
   static const String audio114 = 'assets/audio/114.mp3';
   static const String fontHafs = 'assets/font/hafs.otf';
   static const String imagesBb1 = 'assets/images/bb1.jpg';
+  static const String imagesBb2 = 'assets/images/bb2.jpg';
+  static const String imagesBb3 = 'assets/images/bb3.jpg';
   static const String imagesLogo = 'assets/images/logo.png';
 
 }

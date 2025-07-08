@@ -48,70 +48,70 @@ class _SurahViewState extends State<SurahView> {
         onRefresh: () async {
           await controller.getSurah(widget.chapter);
         },
-        child: Obx(() {
-          return ListView.separated(
-            itemCount: controller.surahList.value.length,
-            itemBuilder: (BuildContext context, int index) {
-              Surah surah = controller.surahList.value[index];
-              if (index == 0) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          widget.chapter.title,
-                          style: TextStyle(fontSize: 20),
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Obx(() {
+            return ListView.separated(
+              itemCount: controller.surahList.value.length,
+              itemBuilder: (BuildContext context, int index) {
+                Surah surah = controller.surahList.value[index];
+                if (index == 0) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            widget.chapter.place,
+                            widget.chapter.title,
                             style: TextStyle(fontSize: 20),
-                          ),
-                          Obx(() {
-                            return Text(
-                              controller.surahList.value.length.toString(),
-                              style: TextStyle(fontSize: 20),
-                            );
-                          })
+                          )
                         ],
                       ),
-                    ),
-                    if(widget.chapter.index != 9 &&
-                        widget.chapter.index != 1) Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ',
-                          style: TextStyle(fontFamily: 'arabic',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),),
-                      ],
-                    ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 8),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              widget.chapter.place,
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            Obx(() {
+                              return Text(
+                                controller.surahList.value.length.toString(),
+                                style: TextStyle(fontSize: 20),
+                              );
+                            })
+                          ],
+                        ),
+                      ),
+                      if(widget.chapter.index != 9 &&
+                          widget.chapter.index != 1) Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ',
+                            style: TextStyle(fontFamily: 'arabic',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),),
+                        ],
+                      ),
 
-                    VerseTile(surah: surah, index: index)
-                  ],
+                      VerseTile(surah: surah, index: index)
+                    ],
+                  );
+                }
+                return VerseTile(
+                  surah: surah,
+                  index: index,
                 );
-              }
-              return VerseTile(
-                surah: surah,
-                index: index,
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) =>
-                Divider(
-                  color: Colors.grey.withOpacity(0.1),
-                  thickness: 20,
-                ),
-          );
-        }),
+              },
+              separatorBuilder: (BuildContext context, int index) =>
+                  SizedBox(height: 10,),
+            );
+          }),
+        ),
       ),
       // bottomNavigationBar: Container(
       //   decoration: BoxDecoration(

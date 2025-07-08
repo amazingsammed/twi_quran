@@ -11,12 +11,12 @@ class OnboardingItems{
     OnboardingInfo(
         title: "Kenkan Qur'an no da biara wɔ twi kasa mu",
         descriptions: "Let the message guide your day. Now in Twi — easy to understand, powerful to live by",
-        image: "assets/images/bb2.jpg"),
+        image: "assets/images/bb2.png"),
 
     OnboardingInfo(
-        title: "Wait at Home",
-        descriptions: "Few Audio available, We are doing our best",
-        image: "assets/images/bb3.jpg"),
+        title: "Qur'an no yε Allah kasa",
+        descriptions: "The duty of a believer is to seek knowledge ",
+        image: "assets/images/bb3.png"),
 
 
   ];

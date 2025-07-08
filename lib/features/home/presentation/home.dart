@@ -35,7 +35,13 @@ class Home extends GetView<HomeController> {
                       controller.getSurah(chapter);
                       return SurahPage(selectedchapter: chapter);
                     }),
-                    leading: CircleAvatar(child: Text("${index + 1}")),
+                    leading: Container(
+                      padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.deepPurple.shade50
+                        ),
+                        child: Text("${index + 1}")),
                     title: Text(
                       chapter.title,
                       style: TextStyle(

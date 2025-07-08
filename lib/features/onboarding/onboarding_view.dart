@@ -22,6 +22,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       bottomSheet: Container(
         color: Colors.white,
         padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
@@ -32,7 +33,7 @@ class _OnboardingViewState extends State<OnboardingView> {
             //Skip Button
             TextButton(
                 onPressed: ()=>pageController.jumpToPage(controller.items.length-1),
-                child: const Text("Skip")),
+                child: const Text("Skip",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold))),
 
             //Indicator
             SmoothPageIndicator(
@@ -43,7 +44,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                 effect: const WormEffect(
                   dotHeight: 12,
                   dotWidth: 12,
-                  activeDotColor: Colors.deepOrange,
+                  activeDotColor: Colors.green,
                 ),
             ),
 
@@ -51,7 +52,7 @@ class _OnboardingViewState extends State<OnboardingView> {
             TextButton(
                 onPressed: ()=>pageController.nextPage(
                     duration: const Duration(milliseconds: 600), curve: Curves.easeIn),
-                child: const Text("Next")),
+                child: const Text("Next",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)),
 
 
           ],
@@ -70,7 +71,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                   Image.asset(controller.items[index].image),
                   const SizedBox(height: 15),
                   Text(controller.items[index].title,
-                    style: const TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
+                    style: const TextStyle(fontSize: 30,fontWeight: FontWeight.bold), textAlign: TextAlign.center),
                   const SizedBox(height: 15),
                   Text(controller.items[index].descriptions,
                       style: const TextStyle(color: Colors.grey,fontSize: 17), textAlign: TextAlign.center),
@@ -92,7 +93,7 @@ class _OnboardingViewState extends State<OnboardingView> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: Colors.deepOrange
+        color: Colors.green
       ),
       width: MediaQuery.of(context).size.width * .9,
       height: 55,
