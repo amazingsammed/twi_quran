@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:twi_quran/responsive.dart';
 
 import '../../bookmark/presentation/bookmark.dart';
+import '../../library/presentation/audiolibrary.dart';
 import '../../library/presentation/librarypage.dart';
 import '../../options/presentation/optionspage.dart';
 
@@ -47,7 +48,7 @@ class _MasterState extends State<Master> with SingleTickerProviderStateMixin {
 
     List<Widget> screens = [
       Home(),
-      Library(),
+      AudioLibrary(),
       Bookmark(),
       // Translatorpage(),
       Optionspage(),

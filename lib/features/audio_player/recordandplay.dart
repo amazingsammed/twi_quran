@@ -11,9 +11,9 @@ import 'package:twi_quran/features/home/domain/models/surah.dart';
 import '../home/controller/home_controller.dart';
 
 class RecordAndPlayButton extends StatefulWidget {
-  final Surah surah; // Path where audio will be saved
+  final Surah surah;
 
-  RecordAndPlayButton({required this.surah});
+  const RecordAndPlayButton({super.key, required this.surah});
 
   @override
   _RecordAndPlayButtonState createState() => _RecordAndPlayButtonState();
@@ -30,25 +30,24 @@ class _RecordAndPlayButtonState extends State<RecordAndPlayButton> {
 
   checkPath() async {
     _path = Directory(
-        '/storage/emulated/0/Music/Twi_Quran/${controller.chapterList[widget.surah.sura-1].title}');
+        '/storage/emulated/0/Music/Twi_Quran/${controller.chapterList[widget.surah.sura - 1].title}');
     if (!await _path.exists()) {
       await _path.create(recursive: true);
     }
-    print(_path.path);
   }
 
   Future<bool> checkIfFileExist() async {
     await checkPath();
-    return await File('${_path.path}/${widget.surah.ayah}.m4a').exists();
+    return await File(audioFile).exists();
   }
 
   Future deleteFile() async {
-     await File('${_path.path}/${widget.surah.ayah}.m4a').delete();
-     setState(() {
-
-     });
+    await File(audioFile).delete();
+    setState(() {});
   }
 
+
+  String get audioFile => '${_path.path}/${widget.surah.sura}-${widget.surah.ayah}.m4a';
   @override
   void initState() {
     super.initState();
@@ -56,11 +55,8 @@ class _RecordAndPlayButtonState extends State<RecordAndPlayButton> {
     _audioPlayer = AudioPlayer();
     _audioPlayer.positionStream.listen((audioDuration) {
       setState(() {
-        position = audioDuration.inSeconds/60;
+        position = audioDuration.inSeconds / 60;
       });
-
-
-
     });
   }
 
@@ -70,7 +66,7 @@ class _RecordAndPlayButtonState extends State<RecordAndPlayButton> {
       if (await _audioRecorder.hasPermission()) {
         await checkPath();
         await _audioRecorder.start(const RecordConfig(),
-            path: '${_path.path}/${widget.surah.ayah}.m4a');
+            path: audioFile);
         setState(() {
           isRecording = true;
         });
@@ -99,12 +95,8 @@ class _RecordAndPlayButtonState extends State<RecordAndPlayButton> {
       setState(() {
         isPlaying = true;
       });
-      await _audioPlayer
-          .setFilePath('${_path.path}/${widget.surah.ayah}.m4a');
+      await _audioPlayer.setFilePath(audioFile);
       await _audioPlayer.play();
-      setState(() {
-        isPlaying = false;
-      });
     } catch (e) {
       print("Error playing audio: $e");
     }
@@ -134,10 +126,6 @@ class _RecordAndPlayButtonState extends State<RecordAndPlayButton> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        IconButton(
-          icon: Icon(isRecording ? Icons.stop : Icons.mic),
-          onPressed: isRecording ? _stopRecording : _startRecording,
-        ),
         FutureBuilder(
             future: checkIfFileExist(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -146,28 +134,49 @@ class _RecordAndPlayButtonState extends State<RecordAndPlayButton> {
                   return Row(
                     children: [
                       IconButton(
-                        icon:
-                            Icon(isPlaying ? Icons.stop : Icons.play_arrow),
-                        onPressed:
-                            isPlaying ? _stopPlaying : _playRecording,
-                      ),Slider(
+                        icon: Icon(isPlaying ? Icons.stop : Icons.play_arrow,color: Colors.green,),
+                        onPressed: isPlaying ? _stopPlaying : _playRecording,
+                      ),
+                      Slider(
+                        activeColor: Colors.blue,
                         value: position,
-                        max:_audioPlayer.duration==null?1.0:_audioPlayer.duration!.inSeconds/60,
-                        onChanged: (a){
-                        // setState(() {
-                        //   position=a;
-                        // });
-                      },), IconButton(
-                        icon:
-                        Icon(Icons.delete),
-                        onPressed:() async {
-                          await deleteFile();
+                        max: _audioPlayer.duration == null
+                            ? 1.0
+                            : _audioPlayer.duration!.inSeconds / 60,
+                        onChanged: (a) {
+                          // setState(() {
+                          //   position=a;
+                          // });
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.delete,color: Colors.red,),
+                        onPressed: () async {
+                          Get.defaultDialog(
+                            titlePadding: EdgeInsets.zero,
+                              title: "",
+                              content: Column(
+                                children: [
+                                  Icon(Icons.delete,size: 70,),
+                                  const Text("Do you want to delete this audio?"),
+                                ],
+                              ),
+                              onCancel: (){},
+                              textCancel: "No",
+                              textConfirm: "Yes",
+                              onConfirm: () async {
+                                await deleteFile();
+                                Navigator.pop(context);
+                              });
                         },
                       )
                     ],
                   );
                 }
-                return SizedBox();
+                return IconButton(
+                  icon: Icon(isRecording ? Icons.stop : Icons.mic,color: Colors.blue,),
+                  onPressed: isRecording ? _stopRecording : _startRecording,
+                );
               } else if (snapshot.hasError) {
                 return Icon(Icons.error_outline);
               } else {

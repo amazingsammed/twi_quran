@@ -17,11 +17,11 @@ showErrorSnackbar({required String message}) {
     );
 }
 
-showSuccessSnackbar({required String message}) {
+showSuccessSnackbar({required String message,String? title}) {
   return Get
     ..closeAllSnackbars()
     ..snackbar(
-      "Success",
+      title??"Success",
       message,
       backgroundColor: Get.theme.colorScheme.primaryContainer,
       colorText: Get.theme.colorScheme.onPrimaryContainer,

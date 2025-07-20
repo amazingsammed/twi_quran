@@ -8,6 +8,7 @@ import 'package:twi_quran/features/home/domain/models/surah.dart';
 import 'package:twi_quran/features/home/presentation/home.dart';
 import 'package:twi_quran/shared/ui/custom_bottomsheet.dart';
 
+import '../../audio_player/bottom_player.dart';
 import '../../audio_player/twiaudioplayer.dart';
 import 'component/surah_view_drawer.dart';
 import 'component/verse_tile.dart';
@@ -113,27 +114,7 @@ class _SurahViewState extends State<SurahView> {
           }),
         ),
       ),
-      // bottomNavigationBar: Container(
-      //   decoration: BoxDecoration(
-      //
-      //     color: Colors.green[800]
-      //   ),
-      //   height: 50,
-      //   child: Row(
-      //     children: [
-      //       IconButton(onPressed: () async {
-      //        audioPlayer.play();
-      //       }, icon: Icon(Icons.play_arrow_outlined,color: Colors.white,)),
-      //       IconButton(onPressed: () async {
-      //         //audioPlayer.pause();
-      //       }, icon: Icon(Icons.pause,color: Colors.white,)),
-      //
-      //       // Obx(() {
-      //       //   return Text(audioPlayer.currentTime.value.toString());
-      //       // })
-      //     ],
-      //   ),
-      // ),
+     // bottomNavigationBar: BottomPlayer(),
     );
   }
 }

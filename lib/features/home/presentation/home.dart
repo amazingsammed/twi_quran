@@ -14,7 +14,7 @@ class Home extends GetView<HomeController> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Text("Al-Quran Twi"),
+          title: const Text("Home"),
           //   leading: IconButton(onPressed: (){},icon: Icon(Icons.menu),),
           actions: [
           ],

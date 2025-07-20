@@ -23,12 +23,12 @@ class Bookmark extends GetView<HomeController> {
       },
         child: Obx(() {
           if(controller.bookmarkList.value.isEmpty) return Center(child: Text('No Bookmarks'),);
-          return ListView.separated(
+          return ListView.builder(
             itemCount: controller.bookmarkList.value.length,
             itemBuilder: (BuildContext context, int index) {
               Surah surah = controller.bookmarkList.value[index];
               return Card(
-                margin: EdgeInsets.symmetric(horizontal: 10,vertical: 3),
+                margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 3),
                 child: Column(
                   children: [
                     Text(controller.chapterList.where((e)=>e.index==surah.sura).first.title),
@@ -37,11 +37,7 @@ class Bookmark extends GetView<HomeController> {
                 ),
               );
             },
-            separatorBuilder: (BuildContext context, int index) =>
-                Divider(
-                  color: Colors.grey.withOpacity(0.3),
-                  thickness: 20,
-                ),
+
           );
         }),),
     );

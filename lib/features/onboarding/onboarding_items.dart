@@ -15,7 +15,7 @@ class OnboardingItems{
 
     OnboardingInfo(
         title: "Qur'an no yε Allah kasa",
-        descriptions: "The duty of a believer is to seek knowledge ",
+        descriptions: "It is the duty of a believer is to seek knowledge,Quran is the word of Allah.",
         image: "assets/images/bb3.png"),
 
 
