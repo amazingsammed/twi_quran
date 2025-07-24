@@ -4,12 +4,12 @@ class Assets {
 
   static const String assetsBelievers = 'assets/believers.db';
   static const String assetsVerses = 'assets/verses.csv';
-  static const String audio114 = 'assets/audio/114.mp3';
   static const String fontHafs = 'assets/font/hafs.otf';
   static const String imagesBb1 = 'assets/images/bb1.jpg';
   static const String imagesBb2 = 'assets/images/bb2.png';
   static const String imagesBb3 = 'assets/images/bb3.png';
   static const String imagesLogo = 'assets/images/logo.png';
+  static const String peopleHakim = 'assets/images/people/hakim.jpg';
   static const String peopleShakuur = 'assets/images/people/shakuur.jpg';
 
 }

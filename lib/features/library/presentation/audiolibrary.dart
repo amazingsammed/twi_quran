@@ -22,7 +22,7 @@ class AudioLibrary extends StatelessWidget {
                   shrinkWrap: true,
                   physics: ScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisExtent: 200,
+                    mainAxisExtent: 240,
                       crossAxisCount: 2
                   ),
                   itemCount: people.length,
@@ -37,5 +37,7 @@ class AudioLibrary extends StatelessWidget {
 }
 
 List<Reciter> people=[
-  Reciter(name: "Abdul Mumin ", image: "assets/images/people/shakuur.jpg", phone: "+233 244622728", uuid: "Shakuur")
+  Reciter(name: "Abdul Mumin Salahudeen", image: "assets/images/people/shakuur.jpg", phone: "+233 244622728", uuid: "Shakuur"),
+  Reciter(name: "Abdul Hakim Alhassan ", image: "assets/images/people/hakim.jpg", phone: "+233 56120496", uuid: "Hakim"),
+  Reciter(name: "Abubakar Mohammed ", image: "assets/images/people/hakim.jpg", phone: "+233 56120496", uuid: "Abuu"),
 ];
