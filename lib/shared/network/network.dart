@@ -13,7 +13,7 @@ class NetworkInfoImpl implements NetworkInfo {
   @override
   Future<bool> hasInternet() async {
     try {
-      final results = await InternetConnectionChecker().hasConnection;
+      final results = await InternetConnectionChecker.instance.hasConnection;
       return results;
     } on SocketException catch (_) {
       return false;
