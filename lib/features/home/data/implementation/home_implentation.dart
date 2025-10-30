@@ -10,7 +10,7 @@ class HomeImplentation extends QuranRepository {
   @override
   Future<Either<Failure, List<Chapters>>> getAllChapters() async {
     try {
-      Dbhelper mydb = Dbhelper();
+      DbManager mydb = DbManager();
       return Right(await mydb.getChapters());
     } catch (e) {
       return Left(Failure('Unable to fetch Chapters'));
@@ -20,7 +20,7 @@ class HomeImplentation extends QuranRepository {
   @override
   Future<Either<Failure, List<Surah>>> getSurah(Chapters chapter) async {
     try {
-      Dbhelper mydb = Dbhelper();
+      DbManager mydb = DbManager();
       return Right(await mydb.getSurah(chapter.index));
     } catch (e) {
       return Left(Failure('Unable to fetch Verses'));
@@ -36,7 +36,7 @@ class HomeImplentation extends QuranRepository {
   @override
   Future<Either<Failure, List<Surah>>> getBookmarks() async {
     try {
-      Dbhelper mydb = Dbhelper();
+      DbManager mydb = DbManager();
       return Right(await mydb.getBookmarks());
     } catch (e) {
       return Left(Failure('Unable to fetch Verses'));
@@ -46,7 +46,7 @@ class HomeImplentation extends QuranRepository {
   @override
   Future<Either<Failure, bool>> saveBookmark(Surah surah) async {
     try {
-      Dbhelper mydb = Dbhelper();
+      DbManager mydb = DbManager();
       return Right(await mydb.saveBookmarks(surah));
     } catch (e) {
       return Left(Failure('Unable to fetch Verses'));

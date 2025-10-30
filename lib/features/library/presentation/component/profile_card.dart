@@ -6,34 +6,24 @@ import '../../domain/model/reciter.dart';
 
 class ProfileCard extends StatelessWidget {
   final Reciter reciter;
-  const ProfileCard({super.key, required this.reciter});
+  final VoidCallback? onTap;
+  const ProfileCard({super.key, required this.reciter,this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        showSuccessSnackbar(message: "Audio of ${reciter.name.trim()} coming soon",title: "Dear User");
-      },
+      onTap: onTap,
       child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: 130,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(image: AssetImage(reciter.image),fit: BoxFit.cover),
-                    color: Colors.red),
+        child:   Column(
+          children: [
+            ListTile(
+              leading: CircleAvatar(
+                backgroundImage: AssetImage(reciter.image),
               ),
-               Text(reciter.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
-               Text("Reciter (Twi)"),
-
-
-
-            ],
-          ),
+              title: Text(reciter.name),
+              subtitle: const Text("Kumasi - Ghana"),
+            ),
+          ],
         ),
       ),
     );

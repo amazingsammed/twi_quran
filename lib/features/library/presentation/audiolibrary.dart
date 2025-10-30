@@ -18,17 +18,15 @@ class AudioLibrary extends StatelessWidget {
             children: [
               Text(
                   "Please note: The translation may not capture the full depth and nuances of the original Arabic text"),
-              GridView.builder(
+              ListView.builder(
                   shrinkWrap: true,
                   physics: ScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisExtent: 240,
-                      crossAxisCount: 2
-                  ),
                   itemCount: people.length,
                   itemBuilder: (c, i) {
                     Reciter reciter = people[i];
-                    return ProfileCard(reciter: reciter,);
+                    return ProfileCard(reciter: reciter,onTap: (){
+
+                    },);
                   })
             ],
           ),
@@ -37,7 +35,7 @@ class AudioLibrary extends StatelessWidget {
 }
 
 List<Reciter> people=[
-  Reciter(name: "Abdul Mumin Salahudeen", image: "assets/images/people/shakuur.jpg", phone: "+233 244622728", uuid: "Shakuur"),
-  Reciter(name: "Abdul Hakim Alhassan ", image: "assets/images/people/hakim.jpg", phone: "+233 56120496", uuid: "Hakim"),
-  Reciter(name: "Abubakar Mohammed ", image: "assets/images/people/hakim.jpg", phone: "+233 56120496", uuid: "Abuu"),
+  Reciter(name: "Abdul Mumin Salahudeen", image: "assets/images/people/shakuur.jpg", phone: "+233 244622728", uuid: "shakuur"),
+  // Reciter(name: "Abdul Hakim Alhassan ", image: "assets/images/people/hakim.jpg", phone: "+233 56120496", uuid: "Hakim"),
+  Reciter(name: "Abubakar Mohammed ", image: "assets/images/people/shakuur.jpg", phone: "+233 56120496", uuid: "abuu"),
 ];

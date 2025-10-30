@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'component/audio_playertile.dart';
+
 class Library extends StatelessWidget {
   const Library({super.key});
 
@@ -14,7 +16,7 @@ class Library extends StatelessWidget {
           child: SafeArea(
               child: SingleChildScrollView(child: Column(
             children: [
-Text("Please note: The translation may not capture the full depth and nuances of the original Arabic text"),
+              Text("Please note: The translation may not capture the full depth and nuances of the original Arabic text"),
               SizedBox(height: 20,),
               Card(
                 child: Column(
@@ -30,7 +32,6 @@ Text("Please note: The translation may not capture the full depth and nuances of
                       ),
                       child: Text('Full',style: TextStyle(color: Colors.white),),),
                     ListTile(
-
                       title: Text("Sheikh Haroun Ismaeel"),
                       subtitle: Text('Translation of the Quran into Ashanti by Sheikh Haroun Ismaeel',maxLines: 2, overflow: TextOverflow.ellipsis,),
                     ),
@@ -56,6 +57,13 @@ Text("Please note: The translation may not capture the full depth and nuances of
                     ),
                   ],
                 ),
+              ),
+              AudioTileExpanded(
+                title: "Ghana",
+                assetPath: "assets/111.mp3"
+              ), AudioTileExpanded(
+                title: "Ghana",
+                assetPath: "assets/111.mp3"
               ),
             ],
           ),)),

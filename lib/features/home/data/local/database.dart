@@ -14,7 +14,7 @@ import 'package:twi_quran/responsive.dart';
 
 
 
-class Dbhelper  {
+class DbManager  {
   static Database? _db;
 
   Future<Database?> get db async {
@@ -54,6 +54,15 @@ Future<List<Chapters>> getChapters() async {
     results.add(Chapters.fromMap(element));
   }
   return results;
+}
+
+Future<List<Map<String, dynamic>>?> getAudioById(String id) async {
+  var dbClient = await db;
+
+  List<Map<String, dynamic>> lists =
+  await dbClient!.query("audio ",where: "'id' = 1");
+
+  return lists;
 }
   Future<List<Surah>> getSurah(int index) async {
     List<Surah> results= [];
