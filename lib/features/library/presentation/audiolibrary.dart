@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import '../domain/model/reciter.dart';
+import 'audio_list_page.dart';
 import 'component/profile_card.dart';
 
 class AudioLibrary extends StatelessWidget {
@@ -25,7 +26,7 @@ class AudioLibrary extends StatelessWidget {
                   itemBuilder: (c, i) {
                     Reciter reciter = people[i];
                     return ProfileCard(reciter: reciter,onTap: (){
-
+Get.to(()=>AudioListPage(reciter: reciter));
                     },);
                   })
             ],

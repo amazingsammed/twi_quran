@@ -25,7 +25,7 @@ class DbManager  {
 
   initDb() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, "believers34.db");
+    String path = join(documentsDirectory.path, "believers22.db");
     bool dbExists = await File(path).exists();
 
     if (!dbExists) {
@@ -60,8 +60,8 @@ Future<List<Map<String, dynamic>>?> getAudioById(String id) async {
   var dbClient = await db;
 
   List<Map<String, dynamic>> lists =
-  await dbClient!.query("audio ",where: "'id' = 1");
-
+  await dbClient!.query("audio", where: "`$id` = 1");
+print(lists);
   return lists;
 }
   Future<List<Surah>> getSurah(int index) async {

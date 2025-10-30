@@ -8,7 +8,9 @@ import 'package:just_audio/just_audio.dart';
 class AudioTileExpanded extends StatefulWidget {
   final String title;
   final String assetPath;
-  const AudioTileExpanded({Key? key, required this.title, required this.assetPath})
+  final String leading;
+
+  const AudioTileExpanded({Key? key, required this.title, required this.assetPath, required this.leading})
       : super(key: key);
 
   @override
@@ -42,8 +44,8 @@ class _AudioTileExpandedState extends State<AudioTileExpanded> {
   Widget build(BuildContext context) {
     const vlcOrange = Colors.green;
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+     // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
         onTap: _toggle,
@@ -55,15 +57,15 @@ class _AudioTileExpandedState extends State<AudioTileExpanded> {
               // ---- Header (icon + title + button) -----------------------
               Row(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(right: 12),
-                    child: Icon(Icons.audiotrack, color: vlcOrange, size: 28),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(widget.leading,style: TextStyle(color: vlcOrange),),
                   ),
                   Expanded(
                     child: Text(
                       widget.title,
                       style: const TextStyle(
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.bold,
                         fontSize: 15,
                       ),
                       overflow: TextOverflow.ellipsis,

@@ -13,7 +13,9 @@ class AudioListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    appBar: AppBar(),
+    appBar: AppBar(
+      title: Text(reciter.name),
+    ),
     body: FutureBuilder(
         future: DbManager().getAudioById(reciter.uuid),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -22,7 +24,7 @@ class AudioListPage extends StatelessWidget {
               itemCount: snapshot.data.length,
               itemBuilder: (BuildContext context, int index) {
                 var item = snapshot.data[index];
-              return AudioTileExpanded(title: item['title'], assetPath: "assets/audio/${reciter.uuid}/${item['id']}");
+              return AudioTileExpanded(title: item['title'], assetPath: "assets/audio/${reciter.uuid}/${item['id']}.mp3",leading: item['id'].toString());
             },);
           } else if (snapshot.hasError) {
             return Icon(Icons.error_outline);
