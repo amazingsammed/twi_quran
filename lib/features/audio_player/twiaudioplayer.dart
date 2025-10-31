@@ -11,20 +11,20 @@ class TwiAudioPlayer extends GetxController {
   late AudioPlayer _audioPlayer;
   final record = AudioRecorder();
 
-  @override
-  Future<void> onInit() async {
-
-    super.onInit();
-
-    _audioPlayer = AudioPlayer();
-
-    await _audioPlayer.setAsset("assets/audio/114.mp3");
-
-
-    _audioPlayer.positionStream.listen((position) {
-      currentTime.value = position.inMilliseconds.toDouble();
-    });
-  }
+  // @override
+  // Future<void> onInit() async {
+  //
+  //   super.onInit();
+  //
+  //   _audioPlayer = AudioPlayer();
+  //
+  //   await _audioPlayer.setAsset("assets/audio/114.mp3");
+  //
+  //
+  //   _audioPlayer.positionStream.listen((position) {
+  //     currentTime.value = position.inMilliseconds.toDouble();
+  //   });
+  // }
 
   @override
   void dispose() {

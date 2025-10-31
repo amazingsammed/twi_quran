@@ -60,7 +60,19 @@ Future<List<Map<String, dynamic>>?> getAudioById(String id) async {
   var dbClient = await db;
 
   List<Map<String, dynamic>> lists =
-  await dbClient!.query("audio", where: "`$id` = 1");
+  await dbClient!.rawQuery("""SELECT
+      quran_chapters.title,
+      audio.abuu,
+      audio.shakuur,
+      audio.id
+      FROM
+      audio
+      INNER JOIN
+      quran_chapters
+      ON
+      audio.id = quran_chapters."index"
+      WHERE
+      `audio.$id` = 1""");
 print(lists);
   return lists;
 }

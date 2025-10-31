@@ -17,9 +17,9 @@ class ProfileCard extends StatelessWidget {
         child:   Column(
           children: [
             ListTile(
-              leading: CircleAvatar(
-                backgroundImage: AssetImage(reciter.image),
-              ),
+              // leading: CircleAvatar(
+              //   backgroundImage: AssetImage(reciter.image),
+              // ),
               title: Text(reciter.name),
               subtitle: const Text("Kumasi - Ghana"),
             ),

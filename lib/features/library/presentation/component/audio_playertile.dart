@@ -107,7 +107,7 @@ class _AudioTileExpandedState extends State<AudioTileExpanded> {
                           SliderTheme(
                             data: SliderTheme.of(context).copyWith(
                               activeTrackColor: vlcOrange,
-                              inactiveTrackColor: Colors.grey[700],
+                              inactiveTrackColor: Colors.grey[300],
                               thumbColor: vlcOrange,
                               overlayColor: vlcOrange.withOpacity(0.2),
                               thumbShape:

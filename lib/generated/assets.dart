@@ -2,7 +2,7 @@
 class Assets {
   Assets._();
 
-  static const String abuu001 = 'assets/audio/abuu/1.mp3';
+  static const String abuu1 = 'assets/audio/abuu/1.mp3';
   static const String abuu102 = 'assets/audio/abuu/102.mp3';
   static const String abuu103 = 'assets/audio/abuu/103.mp3';
   static const String abuu104 = 'assets/audio/abuu/104.mp3';
@@ -15,8 +15,6 @@ class Assets {
   static const String abuu112 = 'assets/audio/abuu/112.mp3';
   static const String abuu113 = 'assets/audio/abuu/113.mp3';
   static const String abuu114 = 'assets/audio/abuu/114.mp3';
-  static const String assets11 = 'assets/11.wav';
-  static const String assets111 = 'assets/111.mp3';
   static const String assetsBelievers = 'assets/believers.db';
   static const String assetsVerses = 'assets/verses.csv';
   static const String fontHafs = 'assets/font/hafs.otf';
@@ -26,7 +24,7 @@ class Assets {
   static const String imagesLogo = 'assets/images/logo.png';
   static const String peopleHakim = 'assets/images/people/hakim.jpg';
   static const String peopleShakuur = 'assets/images/people/shakuur.jpg';
-  static const String shakuur001 = 'assets/audio/shakuur/1.mp3';
+  static const String shakuur1 = 'assets/audio/shakuur/1.mp3';
   static const String shakuur102 = 'assets/audio/shakuur/102.mp3';
   static const String shakuur103 = 'assets/audio/shakuur/103.mp3';
   static const String shakuur105 = 'assets/audio/shakuur/105.mp3';
@@ -39,6 +37,18 @@ class Assets {
   static const String shakuur112 = 'assets/audio/shakuur/112.mp3';
   static const String shakuur113 = 'assets/audio/shakuur/113.mp3';
   static const String shakuur114 = 'assets/audio/shakuur/114.mp3';
+  static const String shakuur86 = 'assets/audio/shakuur/86.mp3';
+  static const String shakuur87 = 'assets/audio/shakuur/87.mp3';
+  static const String shakuur88 = 'assets/audio/shakuur/88.mp3';
+  static const String shakuur89 = 'assets/audio/shakuur/89.mp3';
+  static const String shakuur91 = 'assets/audio/shakuur/91.mp3';
+  static const String shakuur92 = 'assets/audio/shakuur/92.mp3';
+  static const String shakuur93 = 'assets/audio/shakuur/93.mp3';
+  static const String shakuur94 = 'assets/audio/shakuur/94.mp3';
+  static const String shakuur95 = 'assets/audio/shakuur/95.mp3';
+  static const String shakuur96 = 'assets/audio/shakuur/96.mp3';
+  static const String shakuur97 = 'assets/audio/shakuur/97.mp3';
+  static const String shakuur98 = 'assets/audio/shakuur/98.mp3';
   static const String shakuur99 = 'assets/audio/shakuur/99.mp3';
 
 }
