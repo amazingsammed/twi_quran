@@ -25,7 +25,7 @@ class DbManager  {
 
   initDb() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, "believers22.db");
+    String path = join(documentsDirectory.path, "believers02.db");
     bool dbExists = await File(path).exists();
 
     if (!dbExists) {
@@ -56,26 +56,34 @@ Future<List<Chapters>> getChapters() async {
   return results;
 }
 
-Future<List<Map<String, dynamic>>?> getAudioById(String id) async {
-  var dbClient = await db;
+  Future<List<Map<String, dynamic>>?> getAudioById(String id) async {
+    var dbClient = await db;
 
-  List<Map<String, dynamic>> lists =
-  await dbClient!.rawQuery("""SELECT
+    // Define allowed columns to prevent injection
+    const allowedColumns = {'abuu', 'shakuur', 'husary', 'minshawy'}; // add your reciters
+
+    if (!allowedColumns.contains(id)) {
+      print('Invalid reciter ID: $id');
+      return [];
+    }
+
+    final List<Map<String, dynamic>> lists = await dbClient!.rawQuery('''
+    SELECT
       quran_chapters.title,
       audio.abuu,
       audio.shakuur,
       audio.id
-      FROM
+    FROM
       audio
-      INNER JOIN
-      quran_chapters
-      ON
-      audio.id = quran_chapters."index"
-      WHERE
-      `audio.$id` = 1""");
-print(lists);
-  return lists;
-}
+    INNER JOIN
+      quran_chapters ON audio.id = quran_chapters.`index`
+    WHERE
+      audio.$id = ?
+  ''', [1]); // Parameterized value
+
+    print('Query result: $lists');
+    return lists;
+  }
   Future<List<Surah>> getSurah(int index) async {
     List<Surah> results= [];
     var dbClient = await db;
